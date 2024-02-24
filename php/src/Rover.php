@@ -6,16 +6,10 @@ class Rover
 {
     public function execute(string $command): string
     {
-        if ($command == 'LLL') {
-            return '0:0:E';
-        }
-
-        if ($command == 'LL') {
-            return '0:0:S';
-        }
-
-        if ($command === 'L') {
-            return '0:0:W';
+        if (str_starts_with($command, 'L')) {
+            $compassLeft = ['W', 'S', 'E'];
+            $leftCommands = strlen($command) - 1;
+            return "0:0:$compassLeft[$leftCommands]";
         }
 
         $coordinateX = strlen($command);

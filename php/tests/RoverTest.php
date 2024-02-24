@@ -9,6 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class RoverTest extends TestCase
 {
+    public Rover $rover;
+
+    public function setUp(): void
+    {
+        $this->rover = new Rover();
+    }
+
     public static function moveCommand()
     {
         yield 'given_an_M_command_the_rover_should_be_0_1_N' => ['M', '0:1:N'];
@@ -16,13 +23,27 @@ class RoverTest extends TestCase
         yield 'given_an_MMM_command_the_rover_should_be_0_3_N' => ['MMM', '0:3:N'];
     }
 
+    public static function leftCommand()
+    {
+        yield 'given_a_L_command_the_rover_should_be_0_0_W' => ['L', '0:0:W'];
+        yield 'given_LL_the_rover_should_be_0_0_S' => ['LL', '0:0:S'];
+        yield 'given_LLL_the_rover_should_be_0_0_E' => ['LLL', '0:0:E'];
+    }
+
     #[test]
     #[DataProvider('moveCommand')]
     public function given_a_move_command_the_rover_should_move(string $command, string $expectedPosition)
     {
-        $rover = new Rover();
+        $finalPosition = $this->rover->execute($command);
 
-        $finalPosition = $rover->execute($command);
+        self::assertEquals($expectedPosition, $finalPosition);
+    }
+
+    #[test]
+    #[DataProvider('leftCommand')]
+    public function given_rotation_to_the_left_commands_the_rover_should_rotate_left(string $command, string $expectedPosition)
+    {
+        $finalPosition = $this->rover->execute($command);
 
         self::assertEquals($expectedPosition, $finalPosition);
     }
@@ -31,40 +52,8 @@ class RoverTest extends TestCase
     #[test]
     public function given_not_a_command_the_rover_landing_position_should_be_0_0_N(): void
     {
-        $rover = new Rover();
-
-        $finalPosition = $rover->execute('');
+        $finalPosition = $this->rover->execute('');
 
         self::assertSame('0:0:N', $finalPosition);
-    }
-
-    #[test]
-    public function given_a_L_command_the_rover_should_be_0_0_W(): void
-    {
-        $rover = new Rover();
-
-        $finalPosition = $rover->execute('L');
-
-        self::assertEquals('0:0:W', $finalPosition);
-    }
-
-    #[test]
-    public function given_LL_the_rover_should_be_0_0_S(): void
-    {
-        $rover = new Rover();
-
-        $finalPosition = $rover->execute('LL');
-
-        self::assertEquals('0:0:S', $finalPosition);
-    }
-
-    #[test]
-    public function given_LLL_the_rover_should_be_0_0_E(): void
-    {
-        $rover = new Rover();
-
-        $finalPosition = $rover->execute('LLL');
-
-        self::assertEquals('0:0:E', $finalPosition);
     }
 }
