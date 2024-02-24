@@ -2,18 +2,19 @@
 
 namespace KataTests;
 
-use Kata\TheClass;
+use Kata\Rover;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class MyClassTest extends TestCase
 {
-    /** @test */
-    public function give_me_a_good_name_please(): void
+    #[test]
+    public function given_not_a_command_the_rover_landing_position_should_be_0_0_N(): void
     {
-        $xxx = new TheClass();
+        $rover = new Rover();
 
-        $result = $xxx->theMethod();
+        $finalPosition = $rover->execute('');
 
-        self::assertEquals(true, $result);
+        self::assertSame('0:0:N', $finalPosition);
     }
 }
