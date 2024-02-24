@@ -8,7 +8,7 @@ class Rover
     {
         if (str_starts_with($command, 'L')) {
             $compassLeft = ['W', 'S', 'E', 'N'];
-            $leftCommands = strlen($command) - 1;
+            $leftCommands = (strlen($command) - 1) % count($compassLeft);
             return "0:0:$compassLeft[$leftCommands]";
         }
 
