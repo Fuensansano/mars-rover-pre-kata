@@ -39,7 +39,7 @@ class RoverTest extends TestCase
     }
 
     #[test]
-    public function given_a_rotate_left_command_the_rover_should_be_0_0_W(): void
+    public function given_a_L_command_the_rover_should_be_0_0_W(): void
     {
         $rover = new Rover();
 
@@ -56,5 +56,15 @@ class RoverTest extends TestCase
         $finalPosition = $rover->execute('LL');
 
         self::assertEquals('0:0:S', $finalPosition);
+    }
+
+    #[test]
+    public function given_LLL_the_rover_should_be_0_0_E(): void
+    {
+        $rover = new Rover();
+
+        $finalPosition = $rover->execute('LLL');
+
+        self::assertEquals('0:0:E', $finalPosition);
     }
 }
