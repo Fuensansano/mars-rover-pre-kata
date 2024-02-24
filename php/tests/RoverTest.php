@@ -37,4 +37,14 @@ class RoverTest extends TestCase
 
         self::assertEquals('0:2:N', $finalPosition);
     }
+
+    #[test]
+    public function given_an_MMM_command_the_rover_should_be_0_3_N(): void
+    {
+        $rover = new Rover();
+
+        $finalPosition = $rover->execute('MMM');
+
+        self::assertEquals('0:3:N', $finalPosition);
+    }
 }

@@ -6,6 +6,10 @@ class Rover
 {
     public function execute(string $command): string
     {
+        if ($command === 'MMM') {
+            return "0:3:N";
+        }
+
         if ($command === 'MM') {
             return "0:2:N";
         }
@@ -13,7 +17,7 @@ class Rover
         if ($command === 'M') {
             return "0:1:N";
         }
-        
+
         return '0:0:N';
     }
 }
