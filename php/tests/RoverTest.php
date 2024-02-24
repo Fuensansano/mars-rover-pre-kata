@@ -37,4 +37,14 @@ class RoverTest extends TestCase
 
         self::assertSame('0:0:N', $finalPosition);
     }
+
+    #[test]
+    public function given_a_rotate_left_command_the_rover_should_be_0_0_W(): void
+    {
+        $rover = new Rover();
+
+        $finalPosition = $rover->execute('L');
+
+        self::assertEquals('0:0:W', $finalPosition);
+    }
 }
