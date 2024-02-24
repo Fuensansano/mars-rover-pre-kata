@@ -47,4 +47,14 @@ class RoverTest extends TestCase
 
         self::assertEquals('0:0:W', $finalPosition);
     }
+
+    #[test]
+    public function given_LL_the_rover_should_be_0_0_S(): void
+    {
+        $rover = new Rover();
+
+        $finalPosition = $rover->execute('LL');
+
+        self::assertEquals('0:0:S', $finalPosition);
+    }
 }
