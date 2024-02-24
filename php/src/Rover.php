@@ -6,6 +6,9 @@ class Rover
 {
     public function execute(string $command): string
     {
+        if ($command === 'MM') {
+            return "0:2:N";
+        }
         if ($command) {
             return "0:1:N";
         }
