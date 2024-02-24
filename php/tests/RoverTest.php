@@ -28,6 +28,7 @@ class RoverTest extends TestCase
         yield 'given_a_L_command_the_rover_should_be_0_0_W' => ['L', '0:0:W'];
         yield 'given_LL_the_rover_should_be_0_0_S' => ['LL', '0:0:S'];
         yield 'given_LLL_the_rover_should_be_0_0_E' => ['LLL', '0:0:E'];
+        yield 'given_LLLL_the_rover_should_be_0_0_N' => ['LLLL', '0:0:N'];
     }
 
     #[test]

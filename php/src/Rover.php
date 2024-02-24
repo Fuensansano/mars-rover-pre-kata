@@ -7,7 +7,7 @@ class Rover
     public function execute(string $command): string
     {
         if (str_starts_with($command, 'L')) {
-            $compassLeft = ['W', 'S', 'E'];
+            $compassLeft = ['W', 'S', 'E', 'N'];
             $leftCommands = strlen($command) - 1;
             return "0:0:$compassLeft[$leftCommands]";
         }
